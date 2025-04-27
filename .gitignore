@@ -1,0 +1,15 @@
+
+# Files
+tailwind*
+*.key
+pywst_config
+components/*.html
+pages/*.html
+CSS/tin.css
+
+# OS
+*.DS_Store
+
+# Directories
+Me
+.idea
