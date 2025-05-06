@@ -10,9 +10,8 @@ function toggle_language_menu(show) {
         document.getElementById("chevron-down").classList.add("hidden");
         langButton.classList.remove("rounded-lg");
         langButton.classList.add("rounded-t-lg");
-        menu.classList.remove("opacity-[0]");
-        menu.classList.remove("-translate-y-full");
-        menu.classList.add("translate-y-8");
+        menu.classList.remove("opacity-[0]", "-translate-y-full");
+        menu.classList.add("lg:translate-y-10", "translate-y-8");
         return;
     }
 
@@ -20,9 +19,8 @@ function toggle_language_menu(show) {
     document.getElementById("chevron-down").classList.remove("hidden");
     langButton.classList.add("rounded-lg");
     langButton.classList.remove("rounded-t-lg");
-    menu.classList.add("opacity-[0]");
-    menu.classList.add("-translate-y-full");
-    menu.classList.remove("translate-y-8");
+    menu.classList.add("opacity-[0]", "-translate-y-full");
+    menu.classList.remove("lg:translate-y-10", "translate-y-8");
 }
 
 function toggle_language_menu_visibility() {
@@ -50,24 +48,30 @@ function is_scrolled_into_view(element_id) {
 function set_section_selected(section) {
     ["nav-header", "nav-about", "nav-projects"].forEach((_id) => {
         const _e = document.getElementById(_id);
-        _e.classList.remove("border-indigo-600");
-        _e.classList.remove("dark:border-indigo-500");
+        _e.classList.remove("border-indigo-600", "dark:border-indigo-500");
         _e.classList.add("border-transparent");
     });
 
     const id = "nav-" + section;
 
     const e = document.getElementById(id);
-    e.classList.add("border-indigo-600");
-    e.classList.add("dark:border-indigo-500");
+    e.classList.add("border-indigo-600", "dark:border-indigo-500");
     e.classList.remove("border-transparent");
 }
 
 document.addEventListener("scroll", () => {
-    if (is_scrolled_into_view("header")) {
+    if (is_scrolled_into_view("career")) {
         set_section_selected("header");
-    } else if (is_scrolled_into_view("about")) {
+        document.getElementById("my-whoami-article").classList.add("-translate-x-full", "opacity-[0]");
+        document.getElementById("my-aspirations-article").classList.add("-translate-x-full", "opacity-[0]");
+        document.getElementById("my-skills-article").classList.add("-translate-x-full", "opacity-[0]");
+    }
+
+    if (is_scrolled_into_view("my-whoami-article")) {
         set_section_selected("about");
+        document.getElementById("my-whoami-article").classList.remove("-translate-x-full", "opacity-[0]");
+        document.getElementById("my-aspirations-article").classList.remove("-translate-x-full", "opacity-[0]");
+        document.getElementById("my-skills-article").classList.remove("-translate-x-full", "opacity-[0]");
     }
 });
 

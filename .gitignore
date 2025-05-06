@@ -6,6 +6,7 @@ pywst_config
 components/*.html
 pages/*.html
 CSS/tin.css
+assets/*.txt
 
 # OS
 *.DS_Store
