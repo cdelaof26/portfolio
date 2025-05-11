@@ -4,6 +4,7 @@ tailwind*
 *.key
 pywst_config
 components/*.html
+svg/*.html
 pages/*.html
 CSS/tin.css
 assets/*.txt

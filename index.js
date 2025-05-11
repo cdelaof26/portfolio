@@ -65,13 +65,26 @@ document.addEventListener("scroll", () => {
         document.getElementById("my-whoami-article").classList.add("-translate-x-full", "opacity-[0]");
         document.getElementById("my-aspirations-article").classList.add("-translate-x-full", "opacity-[0]");
         document.getElementById("my-skills-article").classList.add("-translate-x-full", "opacity-[0]");
+
+        ["front-end", "back-end", "os", "cloud", "desktop", "scripting", "other", "tools"].forEach((id) => {
+            document.getElementById(id + "-article").classList.add("translate-y-full", "opacity-[0]");
+        });
     }
 
-    if (is_scrolled_into_view("my-whoami-article")) {
+    if (is_scrolled_into_view("my-whoami-article") || is_scrolled_into_view("my-skills-article")) {
         set_section_selected("about");
         document.getElementById("my-whoami-article").classList.remove("-translate-x-full", "opacity-[0]");
         document.getElementById("my-aspirations-article").classList.remove("-translate-x-full", "opacity-[0]");
         document.getElementById("my-skills-article").classList.remove("-translate-x-full", "opacity-[0]");
+    }
+
+    if (is_scrolled_into_view("front-end-article") || is_scrolled_into_view("os-article")
+        || is_scrolled_into_view("desktop-article") || is_scrolled_into_view("other-article")) {
+        set_section_selected("about");
+
+        ["front-end", "back-end", "os", "cloud", "desktop", "scripting", "other", "tools"].forEach((id) => {
+            document.getElementById(id + "-article").classList.remove("translate-y-full", "opacity-[0]");
+        });
     }
 });
 
