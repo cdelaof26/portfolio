@@ -8,6 +8,7 @@ svg/*.html
 pages/*.html
 CSS/tin.css
 assets/*.txt
+projects.txt
 
 # OS
 *.DS_Store
