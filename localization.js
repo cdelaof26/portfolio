@@ -39,57 +39,13 @@ const IDS = {
         3: ["languages", "languages-center"],
         4: ["languages-cv-subtitle", "first-lang", "first-lang-fluency", "second-lang", "second-lang-fluency"],
         5: ["contact-cv-subtitle", "cv-mail", "cv-city", "cv-country"],
-        6: ["software-dev-cv-subtitle", "front-end-cv", "automation-cv", "cloud-cv"]
+        6: ["software-dev-cv-subtitle", "front-end-cv", "back-end-cv", "automation-cv", "cloud-cv"]
     }
 }
 
 // I wouldn't like my mail in LLM data...
 const mail = "b64_V1ROS2NHTXpVblpqUjJoc1kyazFhMXBYZUdoaWVUVnRZa2M1ZVZwWVRrRmFNakZvWVZkM2RWa3lPWFJEWnowOUNnPT0K";
 const cv_url = "b64_WVVoU01HTklUVFpNZVRscVdrZFdjMWxYT1cxTmFsbDFXakpzTUdGSVZtbE1iV3gyVERCT1YweDNiejBLCg=="
-
-const ES = {
-    nav: ["Inicio", "Sobre de mi", "Proyectos", "CV"],
-    header: {
-        presentation: ["Hola", "Soy Cristopher 👋.", "Estudiante de ingeniería en sistemas computacionales del Estado de México, México", "Sobre de mi"],
-        cards: {
-            1: ["Mi Portafolio", "Construí este portfolio con el fin de mostrar mis avances en el área hasta el momento.\n¡Siéntete libre de echarle un vistazo!", "Proyectos"],
-            2: ["¿Buscando mi CV?", "¡No busques más! Has clic sobre 'Ir al CV' para ver mi curriculum vitae.", "Ir al CV"]
-        }
-    },
-    about: {
-        0: ["Sobre mi"],
-        1: ["¿Quién soy?", "Me llamo Cristopher, ¡un gusto! Actualmente soy un estudiante de ingeniería en sistemas computacionales, estoy aprendiendo sobre distintos temas, por ejemplo las computadoras como un todo, programación e ingeniería de software. Aunque al momento aún no tengo experiencia en el campo, comparto una pasión por la ciencia y tecnología, especialmente las computadoras."],
-        2: ["¿A que aspiro?", "Aspiro a convertirme en un desarrollador de software, donde pueda combinar mis habilidades técnicas con mi entusiasmo por resolver problemas. Disfruto armar y desarmar cosas - sean electrónicos, aplicaciones de software, o incluso sets de LEGO."],
-        3: ["Mis habilidades", "Me siento orgulloso de ser alguien persistente, minucioso y dedicado, así mismo, estoy abierto a llevar la iniciativa cuando es necesario. Considero tener una habilidad natural para resolver problemas con relativa facilidad."]
-    },
-    tech: {
-        0: ["Tecnologías con las que estoy familiarizado"],
-        1: ["Front-end", "Intermedio", "He creado proyectos con JS y CSS desde cero, pero también he usado frameworks como Next.js, TailwindCSS y Tauri para crear proyectos tanto personales como académicos."],
-        2: ["Back-end", "Principiante", "Tengo poca experiencia con frameworks de backend; no obstante, considero que se más que el promedio en cuanto a Python y Java."],
-        3: ["Sistemas operativos", "Intermedio", "Tengo un conocimiento extenso tanto de la interfaz de usuario como la linea de comando de los sistemas más populares, se trate de navegar a través de los archivos de configuración de Linux, el registro de Windows o las opciones ocultas de macOS. He configurado varias hackintoshes y probado una cantidad considerable de distribuciones Linux basadas en debian tanto en nativo como en máquinas virtuales."],
-        4: ["Nube & gestión", "Intermedio", "Azure como plataforma de nube", "He usado los servicios de infraestructura y plataforma de Azure (IaaS y PaaS), principalmente máquinas virtuales, instancias de MySQL administradas, Azure disks y Azure files para desplegar y administrar pequeños proyectos distribuidos."],
-        5: ["Escritorio", "Avanzado", "La mayoría de las aplicaciones de escritorio que he construido están escritas en Java, específicamente Swing, el cual es un framework para desarrollar aplicaciones multiplataforma para escritorio."],
-        6: ["Scripting", "Avanzado", "Soy capaz de crear, a la brevedad, programas en Python para automatizar todo tipo de tareas, desde las simples como procesar un CSV hasta tan las más complejas como el web scrapping."],
-        7: ["Otros lenguajes", "Intermedio", "Al momento no he construido muchos programas con estos lenguajes, pero tengo conocimiento suficiente para construir aplicaciones."],
-        8: ["Herramientas", "Intermedio", "He usado estas herramientas para desarrollar algunos de los proyectos en este portafolio."]
-    },
-    portfolio: {
-        0: ["Proyectos", "Todo", "Front-end", "Escritorio", "Scripting", "Otros"],
-        1: ["Escritorio", "Front-end", "Scripting", "Escritorio", "Front & back end", "Front-end", "Front-end", "Escritorio", "Scripting", "Scripting", "Escritorio", "Scripting", "Otros"],
-        2: ["libBasicUI es una pequeña biblioteca de interfaz gráfica hecha encima de Java Swing, esta utiliza técnicas de custom-painting para entregar un look and feel moderno al mismo tiempo que mantiene la compatibilidad multi-plataforma.", "Herramienta que tiene como objetivo ayudar a los estudiantes del IPN a crear horarios de forma rápida y sencilla, teniendo en cuenta la preferencia por una determinada unidad de aprendizaje y evitando las horas muertas entre clases.", "Py WebScript Transcriptor es un traductor de HTML a JavaScript completamente escrito en Python. Tiene como objetivo principal proveer una forma de crear elementos HTML reutilizables para páginas estáticas, aunque también es posible utilizarlo para convertir páginas web a JS.", "PointMotionLib es un proyecto que aspira a ser un software básico de animación. Utiliza cuadrados (llamados Vertices) para crear polígonos utilizando lineas y curvas de Bezier como QuadCurve2D y CubicCurve2D. El usuario puede ligar vectores a los vertices, estos vectores serán la ruta que los puntos seguirán para crear la animación.", "FinbalanC++ es un concepto de herramienta que aspira a ayudar a los usuarios a manejar sus finanzas personales en un solo lugar. Escrito con tecnologías web, python y MySQL.", "Aplicación para visualizar la información del clima en México a través de la API del SMN (Servicio Meteorológico Nacional). Esta aplicación utiliza NextJS (framework de React), TailwindCSS, DaisyUI y Python.", "IP-Calc es una calculadora IP con interfaz web. Puede mostrar propiedades de una IPv4, convertir máscaras de red de formato numérico a formato IP y realizar subnetting.", "Pequeño minijuego tipo tower-defense de código abierto con creador de mundos incluido y gráficos pseudo 3d. Coloca torretas para eliminar todos los monstruo que se dirigen al reloj, defiende diferentes hordas de enemigos y renueva tus defensas.", "Proyecto básico en python3 para realizar ARP-Poisoning a dispositivos en red local.", "Pseudo git hasher (o de forma abreviada pgitHash), es una utilidad pequeña para crear bases de datos .xlsx con el fin de llevar un control de archivos. pgitHash pretende ayudar con las copias de seguridad manuales al señalar las diferencias entre discos y aplicar cualquier cambio al disco de respaldo.", "REPL escrito en Java", "Pequeño servidor HTTP 1.1", "Pequeño juego de ping pong en FPGA con VHDL."],
-        3: ["Página de Github [EN]", "Página de Github [ES]", "Página de Github [EN]", "Página de Github [EN]", "Página de Github [ES]", "Página de Github [ES]", "Página de Github [ES]", "Página de Github [EN]", "Página de Github [EN]", "Página de Github [EN]", "Página de Github [EN]", "Página de Github [ES]", "Página de Github [EN]"],
-        4: ["Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más", "Saber más"]
-    },
-    cv: {
-        0: ["Mi CV", "CV_ES.pdf"],
-        1: ["Educación", "Bachillerato", "CECyT 9 en el IPN", "Técnico en programación"],
-        2: ["Universidad", "ESCOM en el IPN", "Ingeniería en sistemas computacionales"],
-        3: ["Idiomas", "CENLEX Zacatenco en el IPN"],
-        4: ["Idiomas", "Español", "Nativo", "Inglés", "B2 - MCER"],
-        5: ["Contacto", mail, "Estado de México", "México"],
-        6: ["Desarrollo de software", "Desarrollo de front-end", "Automatización & scripting", "Cómputo en la nube"]
-    }
-}
 
 const EN = {
     nav: ["Home", "About me", "Projects", "CV"],
@@ -110,7 +66,7 @@ const EN = {
         0: ["Technologies I am familiar with"],
         1: ["Front-end", "Intermediate", "I have put together things with vanilla JS and CSS, but I have also used frameworks like Next.js, TailwindCSS and Tauri to build personal and academic projects."],
         2: ["Back-end", "Beginner", "I have little experience with backend frameworks; however I take pride in being somewhat fluent in both Python and Java."],
-        3: ["Operating systems", "Intermediate", "Regarding OSes, I have extensive knowledge of both user and command line interfaces in the most popular OSes, whether it is going through Linux config files, Windows registry or macOS hidden options. I have built several hackintoshes and tried a fair amount of debian-based linux distros in both bare-metal and virtual machines."],
+        3: ["Operating systems", "Intermediate", "Regarding OSes, I have extensive knowledge of both user and command line interfaces in the most popular OSes, whether it is going through Linux config files, Windows registry or macOS hidden options. I have created several hackintoshes and tried a fair amount of debian-based linux distros in both bare-metal and virtual machines."],
         4: ["Cloud & management", "Intermediate", "Azure as cloud platform", "I have used Azure's IaaS and PaaS, primarily virtual machines, administered MySQL instances, Azure disks and Azure files to deploy and manage small distributed projects."],
         5: ["Desktop", "Advanced", "Most desktop grade projects I have built are written in Java, specifically Swing which is a cross-platform framework for desktop applications."],
         6: ["Scripting", "Advanced", "I am capable of rapidly creating Python programs to automate tasks as simple as parsing a CSV and as complex as web scrapping."],
@@ -125,15 +81,16 @@ const EN = {
         4: ["Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more", "Learn more"]
     },
     cv: {
-        0: ["My CV", "CV_EN.pdf"],
+        0: ["My CV - Simplified", "CV_EN.pdf"],
         1: ["Education", "High school", "CECyT 9 at IPN", "Programming technician"],
         2: ["University", "ESCOM at IPN", "Computer systems engineering"],
         3: ["Languages", "CENLEX Zacatenco at IPN"],
         4: ["Languages", "Spanish", "Native", "English", "B2 - CEFR"],
         5: ["Contact", mail, "State of Mexico", "Mexico"],
-        6: ["Software development", "Front-end development", "Automation & scripting", "Cloud computing"]
+        6: ["Software development", "Front-end development", "Back-end development", "Automation & scripting", "Cloud computing"]
     }
 }
+let ES = undefined;
 
 let is_spanish = false;
 
@@ -171,8 +128,20 @@ function set_localization(json, ids) {
     }
 }
 
-function load_localization(l) {
+async function load_localization(l) {
     is_spanish = l.includes("es-");
+    if (is_spanish && ES === undefined)
+        try {
+            await fetch("es_localization").then(async (response) => {
+                ES = await response.json();
+                ES["cv"]["5"][ES["cv"]["5"].indexOf("email")] = mail;
+            });
+        } catch (e) {
+            console.error(e);
+            set_lang("en-US");
+            return;
+        }
+
     const data = is_spanish ? ES : EN;
     set_localization(data, IDS);
 

@@ -1,0 +1,1 @@
+function circle_button(id, classData) {const e0 = document.createElement('button');e0.addEventListener('click', (evt) => _show_project(evt));e0.setAttribute('id', `circle-button-${id}`);e0.setAttribute('class', `rounded-full size-8 hover:cursor-pointer ${classData}`);return e0;}
