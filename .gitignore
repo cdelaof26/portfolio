@@ -3,8 +3,14 @@
 tailwind*
 *.key
 pywst_config
+assets/_Me.jpeg
 components/*.html
 components/r/*.html
+components/about/*.html
+components/cv/*.html
+components/development/*.html
+components/header/*.html
+components/portfolio/*.html
 svg/*.html
 pages/*.html
 CSS/tin.css

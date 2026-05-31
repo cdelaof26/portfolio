@@ -16,8 +16,10 @@ function toggle_class(add, element, ...classes) {
     if (typeof element === "string")
         element = document.getElementById(element);
 
-    if (element === null)
+    if (element === null) {
+        console.log("null", element)
         return;
+    }
 
     classes.forEach(c => {
         if (add)
@@ -35,7 +37,7 @@ function toggle_language_menu(show) {
     toggle_class(!show, langButton, "rounded-lg");
     toggle_class(show, langButton, "rounded-t-lg");
     toggle_class(!show, menu, "opacity-[0]", "-translate-y-full");
-    toggle_class(show, menu, "translate-y-10", "md:translate-y-11", "lg:translate-y-12");
+    toggle_class(show, menu, "translate-y-8", "md:translate-y-11", "lg:translate-y-12");
 }
 
 function open_section(evt) {
@@ -57,6 +59,7 @@ function open_section(evt) {
 
     toggle_class(!is_open, button, "rotate-45");
     toggle_class(is_open, section, "h-0", "opacity-0", "overflow-hidden");
+    toggle_class(!is_open, section, "min-h-fit");
 
     if (section.style.height === "0px")
         section.style.height = section.scrollHeight + "px";
@@ -73,7 +76,9 @@ function open_section(evt) {
         toggle_class(true, _element, "bg-sidebar-0", "dark:bg-sidebar-1");
         toggle_class(false, _id + "-button", "rotate-45");
         toggle_class(true, _section, "h-0", "opacity-0", "overflow-hidden");
-        _section.style.height = "0px";
+        toggle_class(false, _section, "min-h-fit");
+        if (_section !== null)
+            _section.style.height = "0px";
     });
 }
 
@@ -95,6 +100,20 @@ function is_scrolled_into_view(element_id) {
     return element_bottom <= doc_view_bottom && element_top >= doc_view_top;
 }
 
+function is_scrolled_into_view_x(element_id) {
+    const element = document.getElementById(element_id);
+    if (element === null)
+        return false;
+
+    const doc_view_left = window.scrollX;
+    const doc_view_right = doc_view_left + window.innerWidth;
+
+    const element_left = element.getBoundingClientRect().left + doc_view_left;
+    const element_right = element_left + element.offsetWidth;
+
+    return element_right <= doc_view_right && element_left >= doc_view_left;
+}
+
 function set_section_selected(section) {
     const id = "nav-" + section;
     last_section = section;
@@ -104,8 +123,8 @@ function set_section_selected(section) {
     ["header", "about", "cv", "portfolio"].forEach((_id) => {
         _id = "nav-" + _id;
         const e = document.getElementById(_id);
-        toggle_class(id === _id, e, "md:border-sky-600", "dark:md:border-sky-500");
-        toggle_class(id === _id, e, "text-white", "bg-sky-600", "dark:bg-sky-500", "md:bg-transparent", "dark:md:bg-transparent", "md:text-black", "dark:md:text-white");
+        toggle_class(id === _id, e, "md:border-accent-light-0", "dark:md:border-accent-dark-0");
+        toggle_class(id === _id, e, "text-white", "bg-accent-light-0", "dark:bg-accent-dark-0", "md:bg-transparent", "dark:md:bg-transparent", "md:text-black", "dark:md:text-white");
 
         toggle_class(id !== _id, e, "md:border-transparent");
     });
@@ -130,16 +149,21 @@ function scroll_section_into_view(section) {
 
 let index = 0;
 let cat = front_end_projects;
+let errors = 0;
 
 function load_img() {
+    if (errors >= 3)
+        return;
+
     const next_img = document.getElementById(cat[index] + "-img");
-    if (next_img.getAttribute("path") !== "")
+    if (next_img !== null && next_img.getAttribute("path") !== "")
         fetch(next_img.getAttribute("path")).then(async promise => {
             next_img.setAttribute("path", "");
             next_img.src = URL.createObjectURL(await promise.blob());
             toggle_class(false, next_img, "hidden");
             toggle_class(true, next_img.nextElementSibling, "hidden");
         }).catch(e => {
+            errors++;
             console.error(e);
             toggle_class(true, next_img, "hidden");
             toggle_class(false, next_img.nextElementSibling, "hidden");
@@ -148,37 +172,28 @@ function load_img() {
 
 function show_project(prev) {
     if (cat.length === 1) {
-        toggle_class(false, cat[index] + "-project-article", "hidden");
         index = 0;
-        toggle_class(false, cat[index] + "-project-article", "hidden");
         load_img();
         return;
     }
 
     index += prev ? -1 : 1;
-
-    let current = index + (prev ? 1 : -1);
-    if (index === cat.length && !prev) {
+    if (index === cat.length && !prev)
         index = 0;
-        current = cat.length - 1;
-    } else if (index === -1) {
+    else if (index === -1)
         index = cat.length - 1;
-        current = 0;
-    }
 
     for (let i = 0; i < cat.length; i++) {
-        toggle_class(i === index, `circle-button-${i}`, "bg-sky-600", "dark:bg-sky-500");
+        toggle_class(i === index, `circle-button-${i}`, "bg-accent-light-0", "dark:bg-accent-dark-0");
         toggle_class(i !== index, `circle-button-${i}`, "bg-sidebar-0", "dark:bg-sidebar-1");
     }
 
     load_img();
 
-    toggle_class(false, cat[index] + "-project-article", "hidden");
-    toggle_class(true, cat[current] + "-project-article", "hidden");
+    document.getElementById(cat[index] + "-project-article").scrollIntoView({behavior: "smooth", inline: "center"})
 }
 
 function _show_project(evt) {
-    toggle_class(true, cat[index] + "-project-article", "hidden");
     index = Number(evt.target.id.replace("circle-button-", "")) - 1;
     show_project(false);
 }
@@ -187,8 +202,9 @@ function toggle_project_set(type) {
     const id = type + "-projects";
 
     ["all", "front-end", "desktop", "scripting", "others"].forEach((_id, i) => {
+        toggle_class(type !== _id, _id + "-projects-div", "hidden");
+
         if (type === _id) {
-            toggle_class(true, cat[index] + "-project-article", "hidden");
             cat = projects[i - 1];
             index = 1;
             show_project(true);
@@ -197,7 +213,7 @@ function toggle_project_set(type) {
             while (buttons.hasChildNodes())
                 buttons.removeChild(buttons.children[0])
 
-            buttons.appendChild(circle_button(0, "bg-sky-600 dark:bg-sky-500"));
+            buttons.appendChild(circle_button(0, "bg-accent-light-0 dark:bg-accent-dark-0"));
             for (let j = 1; j < cat.length; j++)
                 buttons.appendChild(circle_button(j, "bg-sidebar-0 dark:bg-sidebar-1"));
         }
@@ -208,7 +224,7 @@ function toggle_project_set(type) {
 
         toggle_class(id !== _id, title_element, "md:hidden", "md:opacity-[0]");
         toggle_class(id !== _id, parent, "bg-sidebar-0", "dark:bg-sidebar-1", "lg:w-16");
-        toggle_class(id === _id, parent, "lg:w-48", "bg-sky-600", "text-white");
+        toggle_class(id === _id, parent, "lg:w-48", "bg-accent-light-0", "dark:bg-accent-dark-0", "shadow-lg", "text-white");
     });
 }
 
@@ -222,54 +238,40 @@ function header_scroll_into_view(evt) {
     const element = document.getElementById(id);
     if (element === null)
         return;
-    element.scrollIntoView();
+
+    element.scrollIntoView({behavior: "smooth"});
 }
 
-document.addEventListener("scroll", () => {
-    if (is_scrolled_into_view("career")) {
-        set_section_selected("header");
+function add_scroll_listener() {
+    const div = document.getElementById("projects-container");
 
-        aboutArticles.forEach(_id => {
-            toggle_class(true, _id + "-article", "-translate-x-full", "opacity-[0]");
-        });
-
-        technologies.forEach((_id) => {
-            toggle_class(true, _id + "-article", "translate-y-full", "opacity-[0]");
-        });
-
-        projects.forEach((_id) => {
-            toggle_class(true, _id + "-project-article", "translate-y-full", "opacity-[0]");
-        });
+    function _show_project() {
+        for (let i = 0; i < cat.length; i++)
+            if (is_scrolled_into_view_x(cat[i] + "-project-article")) {
+                index = i - 1;
+                show_project(false);
+                break;
+            }
     }
 
-    if (is_scrolled_into_view("my-whoami-article") || is_scrolled_into_view("my-skills-article")) {
-        set_section_selected("about");
-        aboutArticles.forEach(_id => {
-            toggle_class(false, _id + "-article", "-translate-x-full", "opacity-[0]");
-        });
-    }
+    let touching = false, touchTimeout;
+    div.addEventListener('touchstart', () => { touching = true; clearTimeout(touchTimeout); });
+    div.addEventListener('touchmove', () => { clearTimeout(touchTimeout); });
+    div.addEventListener('touchend', () => {
+        touchTimeout = setTimeout(() => {
+            touching = false;
+            // _show_project();
+            // TODO: Fix mobile
+        }, 10);
+    });
 
-    if (is_scrolled_into_view("cv") || is_scrolled_into_view("education-cv-subtitle")
-        || is_scrolled_into_view("languages-cv-subtitle") || is_scrolled_into_view("software-dev-cv-subtitle")) {
-        set_section_selected("cv");
-    }
-
-    if (is_scrolled_into_view("front-end-article") || is_scrolled_into_view("os-article")
-        || is_scrolled_into_view("desktop-article") || is_scrolled_into_view("other-article")) {
-        set_section_selected("about");
-
-        technologies.forEach((_id) => {
-            toggle_class(false, _id + "-article", "translate-y-full", "opacity-[0]");
-        });
-    }
-
-    if (is_scrolled_into_view("project-filter")) {
-        set_section_selected("portfolio");
-        load_img();
-    }
-});
+    div.addEventListener("scrollend", () => _show_project());
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+    toggle_class(true, "no-js-msg", "hidden");
+    set_section_selected("header");
+
     document.body.addEventListener("click", (evt) => {
         if (!document.getElementById("lang-div").contains(evt.target))
             toggle_language_menu(false);
@@ -278,5 +280,26 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", (evt) => {
         if (!document.getElementById("nav").contains(evt.target) && !document.getElementById("main-menu").contains(evt.target))
             toggle_main_menu(false);
+    });
+
+    document.addEventListener("scroll", () => {
+        if (is_scrolled_into_view("career"))
+            set_section_selected("header");
+
+        if (is_scrolled_into_view("my-whoami-article") || is_scrolled_into_view("my-skills-article"))
+            set_section_selected("about");
+
+        if (is_scrolled_into_view("cv") || is_scrolled_into_view("education-cv-subtitle")
+            || is_scrolled_into_view("languages-cv-subtitle") || is_scrolled_into_view("software-dev-cv-subtitle"))
+            set_section_selected("cv");
+
+        if (is_scrolled_into_view("front-end-article") || is_scrolled_into_view("os-article")
+            || is_scrolled_into_view("desktop-article") || is_scrolled_into_view("other-article"))
+            set_section_selected("about");
+
+        if (is_scrolled_into_view("project-filter")) {
+            set_section_selected("portfolio");
+            load_img();
+        }
     });
 });

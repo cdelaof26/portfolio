@@ -16,14 +16,14 @@ const IDS = {
     },
     tech: {
         0: ["tech-title"],
-        1: ["front-end-title", "front-end-badge", "front-end-text"],
-        2: ["back-end-title", "back-end-badge", "back-end-text"],
-        3: ["os-title", "os-badge", "os-text"],
-        4: ["cloud-title", "cloud-badge", "cloud-tech", "cloud-text"],
-        5: ["desktop-title", "desktop-badge", "desktop-text"],
-        6: ["scripting-title", "scripting-badge", "scripting-text"],
-        7: ["other-title", "other-badge", "other-text"],
-        8: ["tools-title", "tools-badge", "tools-text"]
+        1: ["front-end-title", "front-end-text"],
+        2: ["back-end-title", "back-end-text"],
+        3: ["os-title", "os-text"],
+        4: ["cloud-title", "cloud-tech", "cloud-text"],
+        5: ["desktop-title", "desktop-text"],
+        6: ["scripting-title", "scripting-text"],
+        7: ["other-title", "other-text"],
+        8: ["development-so", "development-tools", "development-and"]
     },
     portfolio: {
         0: ["projects-title", "all-projects", "front-end-projects", "desktop-projects", "scripting-projects", "others-projects"],
@@ -36,10 +36,13 @@ const IDS = {
         0: ["my-cv", "cv-lang"],
         1: ["education-cv-subtitle", "high-school-level", "high-school", "high-school-program"],
         2: ["university-level", "university", "university-program"],
-        3: ["languages", "languages-center"],
-        4: ["languages-cv-subtitle", "first-lang", "first-lang-fluency", "second-lang", "second-lang-fluency"],
-        5: ["contact-cv-subtitle", "cv-mail", "cv-city", "cv-country"],
-        6: ["software-dev-cv-subtitle", "front-end-cv", "back-end-cv", "automation-cv", "cloud-cv"]
+        3: ["university1-level", "university1", "university1-period"],
+        4: ["languages", "languages-center"],
+        5: ["languages-cv-subtitle", "first-lang", "first-lang-fluency", "second-lang", "second-lang-fluency"],
+        6: ["contact-cv-subtitle", "cv-mail", "cv-city", "cv-country"],
+        7: ["skills-cv-subtitle", "skills-technical", "skills-pro"],
+        8: ["skills-tech-a", "skills-tech-b", "skills-tech-c", "skills-tech-d", "skills-tech-e"],
+        9: ["skills-pro-a", "skills-pro-b", "skills-pro-c", "skills-pro-d", "skills-pro-e"]
     }
 }
 
@@ -50,10 +53,10 @@ const cv_url = "b64_WVVoU01HTklUVFpNZVRscVdrZFdjMWxYT1cxTmFsbDFXakpzTUdGSVZtbE1i
 const EN = {
     nav: ["Home", "About me", "Projects", "CV"],
     header: {
-        presentation: ["Hello", "I'm Cristopher 👋.", "Computer systems engineering student from the State of Mexico, Mexico", "About me"],
+        presentation: ["Hello", "I'm Cristopher 👋.", "Computer systems engineering student from Mexico", "About me"],
         cards: {
-            1: ["My Portfolio", "I have put together this portfolio to provide you with an inside look at my journey so far.\nPlease feel free to check it over!", "Projects"],
-            2: ["Looking for my CV?", "No worries! Click on 'Go to CV section' to check my curriculum vitae.", "Go to CV section"]
+            1: ["My Portfolio", "I have put together this portfolio with school and hobby projects to provide you with an inside look at my journey so far.\nPlease feel free to check it over!", "Go to projects"],
+            2: ["Looking for my CV?", "No worries! Click on the button below to check my curriculum vitae.", "Go to CV"]
         }
     },
     about: {
@@ -64,14 +67,14 @@ const EN = {
     },
     tech: {
         0: ["Technologies I am familiar with"],
-        1: ["Front-end", "Intermediate", "I have put together things with vanilla JS and CSS, but I have also used frameworks like Next.js, TailwindCSS and Tauri to build personal and academic projects."],
-        2: ["Back-end", "Beginner", "I have little experience with backend frameworks; however I take pride in being somewhat fluent in both Python and Java."],
-        3: ["Operating systems", "Intermediate", "Regarding OSes, I have extensive knowledge of both user and command line interfaces in the most popular OSes, whether it is going through Linux config files, Windows registry or macOS hidden options. I have created several hackintoshes and tried a fair amount of debian-based linux distros in both bare-metal and virtual machines."],
-        4: ["Cloud & management", "Intermediate", "Azure as cloud platform", "I have used Azure's IaaS and PaaS, primarily virtual machines, administered MySQL instances, Azure disks and Azure files to deploy and manage small distributed projects."],
-        5: ["Desktop", "Advanced", "Most desktop grade projects I have built are written in Java, specifically Swing which is a cross-platform framework for desktop applications."],
-        6: ["Scripting", "Advanced", "I am capable of rapidly creating Python programs to automate tasks as simple as parsing a CSV and as complex as web scrapping."],
-        7: ["Other languages", "Intermediate", "While I have not developed many programs with these, I have a fair understanding of how use them to create applications."],
-        8: ["Tools", "Intermediate", "I have used these tools to create some of the projects in this portfolio."]
+        1: ["Front-end development", "Proficient in vanilla JavaScript, CSS, TailwindCSS and Next.js."],
+        2: ["Back-end development", "Basic knowledge of Python and Java backend frameworks."],
+        3: ["Operating systems", "Regarding OSes, I have extensive knowledge of both user and command line interfaces in the most popular OSes, whether it is going through Linux config files, Windows registry or macOS hidden options. I have created several hackintoshes and tried a fair amount of debian-based linux distros in both bare-metal and virtual machines."],
+        4: ["Cloud computing", "Azure as cloud platform", "Experience with Azure IaaS and PaaS, managing MySQL instances."],
+        5: ["Desktop", "Most desktop grade projects I have built are written in Java, specifically Swing which is a cross-platform framework for desktop applications."],
+        6: ["Automation & scripting", "Advanced skills in Python for task automation and web scraping."],
+        7: ["Other languages", "While I have not developed many programs with these, I have a fair understanding of how use them to create applications."],
+        8: ["Operating Systems", "Tools", "And Postman"]
     },
     portfolio: {
         0: ["Projects", "All", "Front-end", "Desktop", "Scripting", "Others"],
@@ -84,10 +87,13 @@ const EN = {
         0: ["My CV - Simplified", "CV_EN.pdf"],
         1: ["Education", "High school", "CECyT 9 at IPN", "Programming technician"],
         2: ["University", "ESCOM at IPN", "Computer systems engineering"],
-        3: ["Languages", "CENLEX Zacatenco at IPN"],
-        4: ["Languages", "Spanish", "Native", "English", "B2 - CEFR"],
-        5: ["Contact", mail, "State of Mexico", "Mexico"],
-        6: ["Software development", "Front-end development", "Back-end development", "Automation & scripting", "Cloud computing"]
+        3: ["Exchange", "ESTIINF at UPM", "1st semester of 2026"],
+        4: ["Languages", "CENLEX Zacatenco at IPN"],
+        5: ["Languages", "Spanish", "Native", "English", "B2 - CEFR"],
+        6: ["Contact", mail, "State of Mexico", "Mexico"],
+        7: ["Skills", "Technical", "Professional"],
+        8: ["Programming", "Troubleshooting", "Software engineering", "UI/UX design", "Electronics"],
+        9: ["Problem-solving", "Dedication", "Persistence", "Thoroughness", "Leadership"]
     }
 }
 let ES = undefined;
@@ -134,7 +140,7 @@ async function load_localization(l) {
         try {
             await fetch("es_localization").then(async (response) => {
                 ES = await response.json();
-                ES["cv"]["5"][ES["cv"]["5"].indexOf("email")] = mail;
+                ES["cv"]["6"][ES["cv"]["6"].indexOf("email")] = mail;
             });
         } catch (e) {
             console.error(e);

@@ -1,28 +1,28 @@
 {
     "nav": ["Inicio", "Sobre de mi", "Proyectos", "CV"],
     "header": {
-        "presentation": ["Hola", "Soy Cristopher 👋.", "Estudiante de ingeniería en sistemas computacionales del Estado de México, México", "Sobre de mi"],
+        "presentation": ["Hola", "Soy Cristopher 👋.", "Estudiante de ingeniería en sistemas computacionales en México", "Sobre de mi"],
         "cards": {
-            "1": ["Mi Portafolio", "Construí este portfolio con el fin de mostrar mis avances en el área hasta el momento.\n¡Siéntete libre de echarle un vistazo!", "Proyectos"],
-            "2": ["¿Buscando mi CV?", "¡No busques más! Has clic sobre 'Ir al CV' para ver mi curriculum vitae.", "Ir al CV"]
+            "1": ["Mi Portafolio", "Construí este portfolio con el fin de mostrar mis avances en el área hasta el momento con proyectos escolares y de pasatiempo.\n¡Siéntete libre de echarle un vistazo!", "Ir a proyectos"],
+            "2": ["¿Buscando mi CV?", "¡No busques más! Has clic sobre el botón para ver mi curriculum vitae.", "Ir al CV"]
         }
     },
     "about": {
         "0": ["Sobre mi"],
         "1": ["¿Quién soy?", "Me llamo Cristopher, ¡un gusto! Actualmente soy un estudiante de ingeniería en sistemas computacionales, estoy aprendiendo sobre distintos temas, por ejemplo las computadoras como un todo, programación e ingeniería de software. Aunque al momento aún no tengo experiencia en el campo, comparto una pasión por la ciencia y tecnología, especialmente las computadoras."],
         "2": ["¿A que aspiro?", "Aspiro a convertirme en un desarrollador de software, donde pueda combinar mis habilidades técnicas con mi entusiasmo por resolver problemas. Disfruto armar y desarmar cosas - sean electrónicos, aplicaciones de software, o incluso sets de LEGO."],
-        "3": ["Mis habilidades", "Me siento orgulloso de ser alguien persistente, minucioso y dedicado, así mismo, estoy abierto a llevar la iniciativa cuando es necesario. Considero tener una habilidad natural para resolver problemas con relativa facilidad."]
+        "3": ["Mis competencias", "Me siento orgulloso de ser alguien persistente, minucioso y dedicado, así mismo, estoy abierto a llevar la iniciativa cuando es necesario. Considero tener una habilidad natural para resolver problemas con relativa facilidad."]
     },
     "tech": {
         "0": ["Tecnologías con las que estoy familiarizado"],
-        "1": ["Front-end", "Intermedio", "He creado proyectos con JS y CSS desde cero, pero también he usado frameworks como Next.js, TailwindCSS y Tauri para crear proyectos tanto personales como académicos."],
-        "2": ["Back-end", "Principiante", "Tengo poca experiencia con frameworks de backend; no obstante, considero que conozco más que el promedio en cuanto a Python y Java."],
-        "3": ["Sistemas operativos", "Intermedio", "Tengo un conocimiento extenso tanto de la interfaz de usuario como la linea de comando de los sistemas más populares, se trate de navegar a través de los archivos de configuración de Linux, el registro de Windows o las opciones ocultas de macOS. He configurado varias hackintoshes y probado una cantidad considerable de distribuciones Linux basadas en debian tanto en nativo como en máquinas virtuales."],
-        "4": ["Nube & gestión", "Intermedio", "Azure como plataforma de nube", "He usado los servicios de infraestructura y plataforma de Azure (IaaS y PaaS), principalmente máquinas virtuales, instancias de MySQL administradas, Azure disks y Azure files para desplegar y administrar pequeños proyectos distribuidos."],
-        "5": ["Escritorio", "Avanzado", "La mayoría de las aplicaciones de escritorio que he construido están escritas en Java, específicamente Swing, el cual es un framework para desarrollar aplicaciones multiplataforma para escritorio."],
-        "6": ["Scripting", "Avanzado", "Soy capaz de crear, a la brevedad, programas en Python para automatizar todo tipo de tareas, desde las simples como procesar un CSV hasta tan las más complejas como el web scrapping."],
-        "7": ["Otros lenguajes", "Intermedio", "Al momento no he construido muchos programas con estos lenguajes, pero tengo conocimiento suficiente para construir aplicaciones."],
-        "8": ["Herramientas", "Intermedio", "He usado estas herramientas para desarrollar algunos de los proyectos en este portafolio."]
+        "1": ["Desarrollo de front-end", "Conocimiento extenso de vanilla JavaScript, CSS, Next.js, y TailwindCSS."],
+        "2": ["Desarrollo de back-end", "Conocimiento básico de los frameworks de back-end de Python y Java."],
+        "3": ["Sistemas operativos", "Tengo un conocimiento extenso tanto de la interfaz de usuario como la linea de comando de los sistemas más populares, se trate de navegar a través de los archivos de configuración de Linux, el registro de Windows o las opciones ocultas de macOS. He configurado varias hackintoshes y probado una cantidad considerable de distribuciones Linux basadas en debian tanto en nativo como en máquinas virtuales."],
+        "4": ["Cómputo en la nube", "Azure como plataforma de nube", "Experiencia con Azure IaaS y PaaS, manejo de instancias MySQL."],
+        "5": ["Escritorio", "La mayoría de las aplicaciones de escritorio que he construido están escritas en Java, específicamente Swing, el cual es un framework para desarrollar aplicaciones multiplataforma para escritorio."],
+        "6": ["Automatización & scripting", "Habilidades avanzadas para la automatización de tareas con Python y web scraping."],
+        "7": ["Otros lenguajes", "Al momento no he construido muchos programas con estos lenguajes, pero tengo conocimiento suficiente para construir aplicaciones."],
+        "8": ["Sistemas Operativos", "Herramientas", "Y Postman"]
     },
     "portfolio": {
         "0": ["Proyectos", "Todo", "Front-end", "Escritorio", "Scripting", "Otros"],
@@ -35,9 +35,12 @@
         "0": ["Mi CV - Simplificado", "CV_ES.pdf"],
         "1": ["Educación", "Bachillerato", "CECyT 9 en el IPN", "Técnico en programación"],
         "2": ["Universidad", "ESCOM en el IPN", "Ingeniería en sistemas computacionales"],
-        "3": ["Idiomas", "CENLEX Zacatenco en el IPN"],
-        "4": ["Idiomas", "Español", "Nativo", "Inglés", "B2 - MCER"],
-        "5": ["Contacto", "email", "Estado de México", "México"],
-        "6": ["Desarrollo de software", "Desarrollo de front-end", "Desarrollo de back-end", "Automatización & scripting", "Cómputo en la nube"]
+        "3": ["Movilidad", "ESTIINF en la UPM", "Primer semestre de 2026"],
+        "4": ["Idiomas", "CENLEX Zacatenco en el IPN"],
+        "5": ["Idiomas", "Español", "Nativo", "Inglés", "B2 - MCER"],
+        "6": ["Contacto", "email", "Estado de México", "México"],
+        "7": ["Competencias", "Técnicas", "Profesionales"],
+        "8": ["Programación", "Troubleshooting", "Ingeniería de software", "Diseño UI/UX", "Electrónica"],
+        "9": ["Solución de problemas", "Dedicación", "Persistencia", "Meticulosidad", "Liderazgo"]
     }
 }
