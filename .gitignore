@@ -1,6 +1,6 @@
 
 # Files
-tailwind*
+tailwindcss-macos-*
 *.key
 pywst_config
 assets/_Me.jpeg
