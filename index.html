@@ -14,7 +14,7 @@
 		</title>
 	</head>
 	<body class="text-primary-0 dark:text-primary-1 bg-body-0 dark:bg-body-1 touch-manipulation">
-		<div id="no-js-msg" class="flex flex-col justify-center p-4 h-dvh">
+		<div class="hidden noscript:flex flex-col justify-center p-4 h-dvh">
 			<div class="self-center">
 				<h1 class="tracking-tight text-3xl">
 					This page requires JavaScript to work
@@ -26,6 +26,11 @@
 		</div>
 
 		<script id="nav" src="components/nav.js"></script>
+
+		<div class="fixed -z-10 w-full h-full overflow-hidden">
+			<div id="cursor" class="-z-50 transition-[top,left] md:transition-none duration-[300ms] top-0 left-0 absolute h-full w-full md:h-[200%] md:w-[200%] bg-radial from-blue-100 to-body-0 to-100% dark:from-blue-900 dark:to-body-1"></div>
+			<div class="w-full h-full backdrop-blur-3xl"></div>
+		</div>
 
 		<script id="header" src="pages/header.js"></script>
 		<script id="about" src="pages/about.js"></script>

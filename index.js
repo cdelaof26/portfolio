@@ -16,10 +16,8 @@ function toggle_class(add, element, ...classes) {
     if (typeof element === "string")
         element = document.getElementById(element);
 
-    if (element === null) {
-        console.log("null", element)
+    if (element === null)
         return;
-    }
 
     classes.forEach(c => {
         if (add)
@@ -37,7 +35,7 @@ function toggle_language_menu(show) {
     toggle_class(!show, langButton, "rounded-lg");
     toggle_class(show, langButton, "rounded-t-lg");
     toggle_class(!show, menu, "opacity-[0]", "-translate-y-full");
-    toggle_class(show, menu, "translate-y-8", "md:translate-y-11", "lg:translate-y-12");
+    toggle_class(show, menu, "translate-y-9", "md:translate-y-11", "lg:translate-y-12");
 }
 
 function open_section(evt) {
@@ -242,6 +240,12 @@ function header_scroll_into_view(evt) {
     element.scrollIntoView({behavior: "smooth"});
 }
 
+function cursor_movement(evt) {
+    const cursor = document.getElementById("cursor");
+    cursor.style.left = `${evt.clientX - cursor.clientWidth / 2}px`;
+    cursor.style.top = `${evt.clientY - cursor.clientHeight / 2}px`;
+}
+
 function add_scroll_listener() {
     const div = document.getElementById("projects-container");
 
@@ -254,22 +258,10 @@ function add_scroll_listener() {
             }
     }
 
-    let touching = false, touchTimeout;
-    div.addEventListener('touchstart', () => { touching = true; clearTimeout(touchTimeout); });
-    div.addEventListener('touchmove', () => { clearTimeout(touchTimeout); });
-    div.addEventListener('touchend', () => {
-        touchTimeout = setTimeout(() => {
-            touching = false;
-            // _show_project();
-            // TODO: Fix mobile
-        }, 10);
-    });
-
     div.addEventListener("scrollend", () => _show_project());
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    toggle_class(true, "no-js-msg", "hidden");
     set_section_selected("header");
 
     document.body.addEventListener("click", (evt) => {
