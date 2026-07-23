@@ -1,5 +1,4 @@
 
-const aboutArticles = ["my-whoami", "my-aspirations", "my-skills"];
 const technologies = ["front-end", "back-end", "os", "cloud", "desktop", "scripting", "other", "tools"];
 
 const front_end_projects = ["IPNScheduler", "clima_mx", "IP-Calc", "finbalancpp"];
@@ -148,8 +147,17 @@ function scroll_section_into_view(section) {
 let index = 0;
 let cat = front_end_projects;
 let errors = 0;
+let initial = true;
 
 function load_img() {
+    if (initial) {
+        const e = document.getElementById(cat[index] + "-project-article");
+        if (e !== null) {
+            initial = false;
+            e.scrollIntoView({behavior: "smooth", inline: "center", block: "nearest"});
+        }
+    }
+
     if (errors >= 3)
         return;
 
@@ -183,12 +191,12 @@ function show_project(prev) {
 
     for (let i = 0; i < cat.length; i++) {
         toggle_class(i === index, `circle-button-${i}`, "bg-accent-light-0", "dark:bg-accent-dark-0");
-        toggle_class(i !== index, `circle-button-${i}`, "bg-sidebar-0", "dark:bg-sidebar-1");
+        toggle_class(i !== index, `circle-button-${i}`, "bg-body-0", "dark:bg-body-1");
     }
 
     load_img();
 
-    document.getElementById(cat[index] + "-project-article").scrollIntoView({behavior: "smooth", inline: "center"})
+    document.getElementById(cat[index] + "-project-article").scrollIntoView({behavior: "smooth", inline: "center", block: "nearest"})
 }
 
 function _show_project(evt) {
@@ -213,7 +221,9 @@ function toggle_project_set(type) {
 
             buttons.appendChild(circle_button(0, "bg-accent-light-0 dark:bg-accent-dark-0"));
             for (let j = 1; j < cat.length; j++)
-                buttons.appendChild(circle_button(j, "bg-sidebar-0 dark:bg-sidebar-1"));
+                buttons.appendChild(circle_button(j, "bg-body-0 dark:bg-body-1"));
+
+            document.getElementById(cat[index] + "-project-article").scrollIntoView({behavior: "smooth", inline: "center", block: "nearest"})
         }
 
         _id = _id + "-projects";
@@ -221,7 +231,7 @@ function toggle_project_set(type) {
         const parent = title_element.parentElement;
 
         toggle_class(id !== _id, title_element, "md:hidden", "md:opacity-[0]");
-        toggle_class(id !== _id, parent, "bg-sidebar-0", "dark:bg-sidebar-1", "lg:w-16");
+        toggle_class(id !== _id, parent, "bg-body-0", "dark:bg-body-1", "lg:w-16");
         toggle_class(id === _id, parent, "lg:w-48", "bg-accent-light-0", "dark:bg-accent-dark-0", "shadow-lg", "text-white");
     });
 }
@@ -241,6 +251,9 @@ function header_scroll_into_view(evt) {
 }
 
 function cursor_movement(evt) {
+    if ("ontouchstart" in document.documentElement)
+        return;
+
     const cursor = document.getElementById("cursor");
     cursor.style.left = `${evt.clientX - cursor.clientWidth / 2}px`;
     cursor.style.top = `${evt.clientY - cursor.clientHeight / 2}px`;
@@ -256,6 +269,27 @@ function add_scroll_listener() {
                 show_project(false);
                 break;
             }
+    }
+
+    if ("ontouchstart" in document.documentElement) {
+        // TODO: Fix mobile fix for scroll snap. Current fix works okay-ish
+
+        let scrolling = 0;
+        div.addEventListener("scroll", () => {
+            scrolling++;
+
+            setTimeout(() =>{
+                if (scrolling !== 0) {
+                    scrolling--;
+                    if (scrolling !== 0)
+                        return;
+                }
+
+                scrolling = 0;
+                _show_project();
+            }, 35);
+        });
+        return;
     }
 
     div.addEventListener("scrollend", () => _show_project());
@@ -292,6 +326,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (is_scrolled_into_view("project-filter")) {
             set_section_selected("portfolio");
             load_img();
+        }
+
+        if ("ontouchstart" in document.documentElement) {
+            const cursor = document.getElementById("cursor");
+            cursor.style.left = `${document.documentElement.scrollTop * (cursor.clientWidth / 4) / document.documentElement.scrollTopMax}px`;
+            cursor.style.top = `${document.documentElement.scrollTop * (cursor.clientHeight / 4) / document.documentElement.scrollTopMax}px`;
         }
     });
 });
